@@ -1,4 +1,5 @@
 class Api::AnimalsController < ApplicationController
+  before_action :set_product, only: [:show, :update, :destroy]
 
   def index
     render json: Animal.all
@@ -14,7 +15,7 @@ class Api::AnimalsController < ApplicationController
     if animal.save
       render json: animal
     else
-      render json:animal.errors, status: 422
+      render json: animal.errors, status: 422
     end
   end
 
