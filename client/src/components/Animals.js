@@ -1,12 +1,15 @@
 import React from 'react';
 import { Card, Header, } from 'semantic-ui-react';
+import axios from "axios"
 
 class Animals extends React.Component {
   state = { animals: [], };
 
   componentDidMount() {
-    // todo: make GET request with axios
-    // todo: Update state
+    axios.get("/api/animals")
+    .then( res => {
+      this.setState({ animals: res.data, });
+    })
   }
 
   renderAnimals = () => {
